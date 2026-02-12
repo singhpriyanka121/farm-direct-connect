@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Sprout } from "lucide-react";
+import { Menu, X, Sprout, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -35,8 +35,11 @@ export function Navbar() {
             <Button variant="outline" size="sm">Buyer Dashboard</Button>
           </Link>
           <Link to="/farmer-dashboard">
-            <Button size="sm">Farmer Dashboard</Button>
+            <Button variant="ghost" size="sm">Farmer Dashboard</Button>
           </Link>
+          <Button size="sm" className="gap-1.5 rounded-full">
+            <LogIn className="h-4 w-4" /> Login
+          </Button>
         </div>
 
         {/* Mobile toggle */}
@@ -62,8 +65,11 @@ export function Navbar() {
             <Button variant="outline" size="sm" className="w-full">Buyer Dashboard</Button>
           </Link>
           <Link to="/farmer-dashboard" onClick={() => setOpen(false)}>
-            <Button size="sm" className="w-full">Farmer Dashboard</Button>
+            <Button variant="ghost" size="sm" className="w-full">Farmer Dashboard</Button>
           </Link>
+          <Button size="sm" className="w-full gap-1.5 rounded-full">
+            <LogIn className="h-4 w-4" /> Login
+          </Button>
         </div>
       )}
     </nav>

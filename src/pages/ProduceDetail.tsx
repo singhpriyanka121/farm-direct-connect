@@ -14,10 +14,6 @@ const gradeColors: Record<string, string> = {
   C: "bg-muted text-muted-foreground",
 };
 
-const categoryEmoji: Record<string, string> = {
-  Grains: "🌾", Vegetables: "🥬", Fruits: "🍎", Dairy: "🥛", Pulses: "🫘", Spices: "🌶️",
-};
-
 export default function ProduceDetail() {
   const { id } = useParams();
   const { toast } = useToast();
@@ -55,8 +51,8 @@ export default function ProduceDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-accent/20 h-64 md:h-80 flex items-center justify-center text-8xl">
-              {categoryEmoji[item.category] || "🌿"}
+            <div className="rounded-2xl overflow-hidden h-64 md:h-80">
+              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
             </div>
 
             <div>
@@ -166,8 +162,8 @@ export default function ProduceDetail() {
                 <div className="space-y-3">
                   {related.map((r) => (
                     <Link key={r.id} to={`/produce/${r.id}`} className="flex items-center gap-3 hover:bg-muted/50 p-2 rounded-lg transition-colors">
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-lg">
-                        {categoryEmoji[r.category] || "🌿"}
+                      <div className="w-10 h-10 rounded-lg overflow-hidden">
+                        <img src={r.image} alt={r.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-display font-bold text-sm truncate">{r.name}</p>

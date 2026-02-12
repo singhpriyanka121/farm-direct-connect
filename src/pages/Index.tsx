@@ -70,8 +70,8 @@ const Index = () => {
           >
             {produce.slice(0, 4).map((p, i) => (
               <Card key={p.id} className={`overflow-hidden hover:shadow-lg transition-shadow ${i === 0 ? "animate-float" : ""}`}>
-                <div className="h-24 bg-gradient-to-br from-primary/20 to-accent/30 flex items-center justify-center text-4xl">
-                  {p.category === "Grains" ? "🌾" : p.category === "Vegetables" ? "🍅" : p.category === "Fruits" ? "🥭" : "🌶️"}
+                <div className="h-24 overflow-hidden">
+                  <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                 </div>
                 <CardContent className="p-3">
                   <p className="font-display font-bold text-sm truncate">{p.name}</p>
@@ -152,11 +152,15 @@ const Index = () => {
             {categories.map((cat, i) => (
               <motion.div key={cat.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                 <Link to={`/marketplace?category=${cat.name}`}>
-                  <Card className="text-center p-6 hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
-                    <div className="text-4xl mb-3">{cat.icon}</div>
+                  <Card className="text-center overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
+                    <div className="h-28 overflow-hidden">
+                      <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="p-4">
                     <h3 className="font-display font-bold text-sm">{cat.name}</h3>
                     <p className="text-xs text-muted-foreground">{cat.count} listings</p>
                     <ChevronRight className="h-4 w-4 mx-auto mt-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
                   </Card>
                 </Link>
               </motion.div>

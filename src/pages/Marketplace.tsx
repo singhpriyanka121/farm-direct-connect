@@ -16,10 +16,6 @@ const gradeColors: Record<string, string> = {
   C: "bg-muted text-muted-foreground",
 };
 
-const categoryEmoji: Record<string, string> = {
-  Grains: "🌾", Vegetables: "🥬", Fruits: "🍎", Dairy: "🥛", Pulses: "🫘", Spices: "🌶️",
-};
-
 export default function Marketplace() {
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get("category") || "All";
@@ -125,8 +121,8 @@ export default function Marketplace() {
               return (
                 <Link key={p.id} to={`/produce/${p.id}`}>
                   <Card className="overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group h-full">
-                    <div className="h-40 bg-gradient-to-br from-primary/10 to-accent/20 flex items-center justify-center text-6xl">
-                      {categoryEmoji[p.category] || "🌿"}
+                    <div className="h-40 overflow-hidden">
+                      <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <CardContent className="p-4 space-y-3">
                       <div className="flex items-start justify-between gap-2">

@@ -8,9 +8,6 @@ import { Footer } from "@/components/Footer";
 import { farmers, produce, reviews } from "@/data/mockData";
 import { useToast } from "@/hooks/use-toast";
 
-const categoryEmoji: Record<string, string> = {
-  Grains: "🌾", Vegetables: "🥬", Fruits: "🍎", Dairy: "🥛", Pulses: "🫘", Spices: "🌶️",
-};
 
 export default function FarmerProfile() {
   const { id } = useParams();
@@ -85,8 +82,8 @@ export default function FarmerProfile() {
               {farmerProduce.map((p) => (
                 <Link key={p.id} to={`/produce/${p.id}`}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer h-full">
-                    <div className="h-28 bg-gradient-to-br from-primary/10 to-accent/20 flex items-center justify-center text-4xl">
-                      {categoryEmoji[p.category] || "🌿"}
+                    <div className="h-28 overflow-hidden">
+                      <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     </div>
                     <CardContent className="p-4">
                       <h3 className="font-display font-bold">{p.name}</h3>

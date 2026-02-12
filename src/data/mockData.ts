@@ -54,12 +54,12 @@ export interface Review {
 }
 
 export const categories = [
-  { name: "Grains", icon: "🌾", count: 45 },
-  { name: "Vegetables", icon: "🥬", count: 120 },
-  { name: "Fruits", icon: "🍎", count: 85 },
-  { name: "Dairy", icon: "🥛", count: 32 },
-  { name: "Pulses", icon: "🫘", count: 28 },
-  { name: "Spices", icon: "🌶️", count: 56 },
+  { name: "Grains", icon: "🌾", count: 45, image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=300&fit=crop" },
+  { name: "Vegetables", icon: "🥬", count: 120, image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop" },
+  { name: "Fruits", icon: "🍎", count: 85, image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&h=300&fit=crop" },
+  { name: "Dairy", icon: "🥛", count: 32, image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop" },
+  { name: "Pulses", icon: "🫘", count: 28, image: "https://images.unsplash.com/photo-1515543904413-1f5e45b16ef8?w=400&h=300&fit=crop" },
+  { name: "Spices", icon: "🌶️", count: 56, image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=300&fit=crop" },
 ];
 
 export const farmers: Farmer[] = [
@@ -135,7 +135,7 @@ export const produce: Produce[] = [
     minOrder: 100,
     grade: "A",
     harvestDate: "2025-12-15",
-    image: "",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&h=400&fit=crop",
     description: "Long-grain aromatic basmati rice, aged for 12 months. Perfect for restaurants and premium retail.",
     pricingTiers: [
       { minQty: 100, price: 65 },
@@ -156,7 +156,7 @@ export const produce: Produce[] = [
     minOrder: 50,
     grade: "A",
     harvestDate: "2026-01-20",
-    image: "",
+    image: "https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=600&h=400&fit=crop",
     description: "Certified organic, vine-ripened tomatoes. Firm, juicy, and chemical-free.",
     pricingTiers: [
       { minQty: 50, price: 40 },
@@ -177,7 +177,7 @@ export const produce: Produce[] = [
     minOrder: 50,
     grade: "A",
     harvestDate: "2026-03-01",
-    image: "",
+    image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&h=400&fit=crop",
     description: "Export-quality Alphonso mangoes, hand-picked at peak ripeness.",
     pricingTiers: [
       { minQty: 50, price: 120 },
@@ -198,7 +198,7 @@ export const produce: Produce[] = [
     minOrder: 10,
     grade: "A",
     harvestDate: "2025-11-10",
-    image: "",
+    image: "https://images.unsplash.com/photo-1599909533601-aa042bfb1603?w=600&h=400&fit=crop",
     description: "Premium whole black pepper with bold aroma and intense flavor. Sun-dried naturally.",
     pricingTiers: [
       { minQty: 10, price: 450 },
@@ -219,7 +219,7 @@ export const produce: Produce[] = [
     minOrder: 200,
     grade: "B",
     harvestDate: "2026-01-05",
-    image: "",
+    image: "https://images.unsplash.com/photo-1518977676601-b53f82ber40f?w=600&h=400&fit=crop",
     description: "Clean, sorted potatoes ideal for chips, restaurants, and wholesale distribution.",
     pricingTiers: [
       { minQty: 200, price: 22 },
@@ -240,7 +240,7 @@ export const produce: Produce[] = [
     minOrder: 20,
     grade: "A",
     harvestDate: "2025-10-20",
-    image: "",
+    image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=600&h=400&fit=crop",
     description: "High-curcumin turmeric, stone-ground and chemical-free. Ideal for food processing.",
     pricingTiers: [
       { minQty: 20, price: 200 },
@@ -261,7 +261,7 @@ export const produce: Produce[] = [
     minOrder: 20,
     grade: "A",
     harvestDate: "2026-02-10",
-    image: "",
+    image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=600&h=400&fit=crop",
     description: "Pure A2 cow milk from indigenous breeds. Fresh, unprocessed, and nutrient-rich.",
     pricingTiers: [
       { minQty: 20, price: 70 },
@@ -282,7 +282,7 @@ export const produce: Produce[] = [
     minOrder: 500,
     grade: "B",
     harvestDate: "2026-01-25",
-    image: "",
+    image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&h=400&fit=crop",
     description: "Nashik red onions, crisp and firm. Sorted by size for retail and wholesale.",
     pricingTiers: [
       { minQty: 500, price: 28 },
