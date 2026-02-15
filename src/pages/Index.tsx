@@ -69,15 +69,17 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {produce.slice(0, 4).map((p, i) => (
-              <Card key={p.id} className={`overflow-hidden hover:shadow-lg transition-shadow ${i === 0 ? "animate-float" : ""}`}>
-                <div className="h-24 overflow-hidden">
-                  <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
-                </div>
-                <CardContent className="p-3">
-                  <p className="font-display font-bold text-sm truncate">{p.name}</p>
-                  <p className="text-xs text-muted-foreground">₹{p.price}/{p.unit}</p>
-                </CardContent>
-              </Card>
+              <Link key={p.id} to={`/produce/${p.id}`}>
+                <Card className={`overflow-hidden hover:shadow-lg transition-shadow cursor-pointer ${i === 0 ? "animate-float" : ""}`}>
+                  <div className="h-24 overflow-hidden">
+                    <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                  </div>
+                  <CardContent className="p-3">
+                    <p className="font-display font-bold text-sm truncate">{p.name}</p>
+                    <p className="text-xs text-muted-foreground">₹{p.price}/{p.unit}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </motion.div>
         </div>

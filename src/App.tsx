@@ -11,6 +11,7 @@ import FarmerOnboarding from "./pages/FarmerOnboarding";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import About from "./pages/About";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
           <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

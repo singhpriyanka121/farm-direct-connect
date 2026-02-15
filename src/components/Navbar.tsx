@@ -31,9 +31,11 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Button size="sm" className="gap-1.5 rounded-full">
-            <LogIn className="h-4 w-4" /> Login
-          </Button>
+          <Link to="/login">
+            <Button size="sm" className="gap-1.5 rounded-full">
+              <LogIn className="h-4 w-4" /> Login
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -55,9 +57,11 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Button size="sm" className="w-full gap-1.5 rounded-full">
-            <LogIn className="h-4 w-4" /> Login
-          </Button>
+          <Link to="/login" onClick={() => setOpen(false)}>
+            <Button size="sm" className="w-full gap-1.5 rounded-full">
+              <LogIn className="h-4 w-4" /> Login
+            </Button>
+          </Link>
         </div>
       )}
     </nav>
