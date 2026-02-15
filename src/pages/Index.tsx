@@ -216,7 +216,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/marketplace">
-              <Button size="lg" variant="outline" className="rounded-full font-semibold text-base px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+              <Button size="lg" variant="secondary" className="rounded-full font-semibold text-base px-8">
                 Start Buying
               </Button>
             </Link>
