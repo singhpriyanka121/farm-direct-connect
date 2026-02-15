@@ -31,12 +31,6 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/buyer-dashboard">
-            <Button variant="outline" size="sm">Buyer Dashboard</Button>
-          </Link>
-          <Link to="/farmer-dashboard">
-            <Button variant="ghost" size="sm">Farmer Dashboard</Button>
-          </Link>
           <Button size="sm" className="gap-1.5 rounded-full">
             <LogIn className="h-4 w-4" /> Login
           </Button>
@@ -61,12 +55,6 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/buyer-dashboard" onClick={() => setOpen(false)}>
-            <Button variant="outline" size="sm" className="w-full">Buyer Dashboard</Button>
-          </Link>
-          <Link to="/farmer-dashboard" onClick={() => setOpen(false)}>
-            <Button variant="ghost" size="sm" className="w-full">Farmer Dashboard</Button>
-          </Link>
           <Button size="sm" className="w-full gap-1.5 rounded-full">
             <LogIn className="h-4 w-4" /> Login
           </Button>
