@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, MapPin, ShieldCheck, Star, Calendar, Package, TrendingDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,6 +17,7 @@ const gradeColors: Record<string, string> = {
 export default function ProduceDetail() {
   const { id } = useParams();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const item = produce.find((p) => p.id === id);
   const farmer = item ? farmers.find((f) => f.id === item.farmerId) : null;
   const related = produce.filter((p) => p.category === item?.category && p.id !== id).slice(0, 3);
@@ -34,10 +35,7 @@ export default function ProduceDetail() {
   }
 
   const handleOrder = () => {
-    toast({
-      title: "Order request submitted! 🎉",
-      description: `Your order for ${item.name} has been sent to ${item.farmerName}. They will respond shortly.`,
-    });
+    navigate(`/checkout/${item.id}`);
   };
 
   return (
