@@ -24,19 +24,21 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/produce/:id" element={<ProduceDetail />} />
-          <Route path="/farmer/:id" element={<FarmerProfile />} />
-          <Route path="/farmer-onboarding" element={<FarmerOnboarding />} />
-          <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
-          <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/checkout/:id" element={<Checkout />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/produce/:id" element={<ProduceDetail />} />
+            <Route path="/farmer/:id" element={<FarmerProfile />} />
+            <Route path="/farmer-onboarding" element={<FarmerOnboarding />} />
+            <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
+            <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
