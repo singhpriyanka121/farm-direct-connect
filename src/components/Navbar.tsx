@@ -61,6 +61,9 @@ export function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem onClick={() => navigate("/profile")}>
+                  <User className="h-4 w-4 mr-2" /> Profile
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate(profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard")}>
                   <User className="h-4 w-4 mr-2" /> Dashboard
                 </DropdownMenuItem>
@@ -100,6 +103,13 @@ export function Navbar() {
           ))}
           {user ? (
             <>
+              <Link
+                to="/profile"
+                className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
+                Profile
+              </Link>
               <Link
                 to={profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard"}
                 className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
