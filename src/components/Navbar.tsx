@@ -104,6 +104,13 @@ export function Navbar() {
           {user ? (
             <>
               <Link
+                to="/profile"
+                className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
+                Profile
+              </Link>
+              <Link
                 to={profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard"}
                 className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
                 onClick={() => setOpen(false)}
