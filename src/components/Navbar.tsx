@@ -1,7 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Sprout, LogIn } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Menu, X, Sprout, LogIn, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { label: "Browse Produce", to: "/marketplace" },
@@ -11,6 +19,16 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
+
+  const displayName = profile?.full_name || user?.email?.split("@")[0] || "User";
+  const initials = displayName.charAt(0).toUpperCase();
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur border-b border-border shadow-sm">
@@ -31,11 +49,34 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/login">
-            <Button size="sm" className="gap-1.5 rounded-full">
-              <LogIn className="h-4 w-4" /> Login
-            </Button>
-          </Link>
+
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="gap-2 rounded-full">
+                  <div className="h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
+                    {initials}
+                  </div>
+                  {displayName}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem onClick={() => navigate(profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard")}>
+                  <User className="h-4 w-4 mr-2" /> Dashboard
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut}>
+                  <LogOut className="h-4 w-4 mr-2" /> Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link to="/login">
+              <Button size="sm" className="gap-1.5 rounded-full">
+                <LogIn className="h-4 w-4" /> Login
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -57,11 +98,26 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/login" onClick={() => setOpen(false)}>
-            <Button size="sm" className="w-full gap-1.5 rounded-full">
-              <LogIn className="h-4 w-4" /> Login
-            </Button>
-          </Link>
+          {user ? (
+            <>
+              <Link
+                to={profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard"}
+                className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
+                Dashboard
+              </Link>
+              <Button size="sm" variant="outline" className="w-full gap-1.5 rounded-full" onClick={() => { handleSignOut(); setOpen(false); }}>
+                <LogOut className="h-4 w-4" /> Log out
+              </Button>
+            </>
+          ) : (
+            <Link to="/login" onClick={() => setOpen(false)}>
+              <Button size="sm" className="w-full gap-1.5 rounded-full">
+                <LogIn className="h-4 w-4" /> Login
+              </Button>
+            </Link>
+          )}
         </div>
       )}
     </nav>
