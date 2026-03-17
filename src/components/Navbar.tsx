@@ -61,6 +61,9 @@ export function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem onClick={() => navigate("/profile")}>
+                  <User className="h-4 w-4 mr-2" /> Profile
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate(profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard")}>
                   <User className="h-4 w-4 mr-2" /> Dashboard
                 </DropdownMenuItem>
