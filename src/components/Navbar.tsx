@@ -67,6 +67,12 @@ export function Navbar() {
                 <DropdownMenuItem onClick={() => navigate(profile?.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard")}>
                   <User className="h-4 w-4 mr-2" /> Dashboard
                 </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/cart")}>
+                  <ShoppingCart className="h-4 w-4 mr-2" /> Cart
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/orders")}>
+                  <Package className="h-4 w-4 mr-2" /> Orders
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut}>
                   <LogOut className="h-4 w-4 mr-2" /> Log out
