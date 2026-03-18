@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, MapPin, ShieldCheck, Star, Calendar, Package, TrendingDown } from "lucide-react";
+import { ArrowLeft, MapPin, ShieldCheck, Star, Calendar, Package, TrendingDown, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { produce, farmers } from "@/data/mockData";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const gradeColors: Record<string, string> = {
   A: "bg-primary text-primary-foreground",
@@ -18,6 +20,7 @@ export default function ProduceDetail() {
   const { id } = useParams();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const item = produce.find((p) => p.id === id);
   const farmer = item ? farmers.find((f) => f.id === item.farmerId) : null;
   const related = produce.filter((p) => p.category === item?.category && p.id !== id).slice(0, 3);
@@ -117,8 +120,29 @@ export default function ProduceDetail() {
               <Button className="w-full rounded-full font-semibold text-base" size="lg" onClick={handleOrder}>
                 Place Order
               </Button>
-              <Button variant="outline" className="w-full rounded-full mt-3" onClick={() => toast({ title: "Quote requested!", description: "The farmer will send you a custom quote." })}>
-                Request Quote
+              <Button
+                variant="outline"
+                className="w-full rounded-full mt-3 gap-2"
+                onClick={async () => {
+                  if (!user) { navigate("/login"); return; }
+                  const { error } = await supabase.from("cart_items").insert({
+                    user_id: user.id,
+                    produce_id: item.id,
+                    produce_name: item.name,
+                    farmer_name: item.farmerName,
+                    price: item.price,
+                    unit: item.unit,
+                    quantity: item.minOrder,
+                    image: item.image,
+                  });
+                  if (error) {
+                    toast({ title: "Failed to add to cart", variant: "destructive" });
+                  } else {
+                    toast({ title: "Added to cart! 🛒", description: `${item.name} added to your cart.` });
+                  }
+                }}
+              >
+                <ShoppingCart className="h-4 w-4" /> Add to Cart
               </Button>
             </Card>
 
