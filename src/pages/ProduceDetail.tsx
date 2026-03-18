@@ -20,6 +20,7 @@ export default function ProduceDetail() {
   const { id } = useParams();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const item = produce.find((p) => p.id === id);
   const farmer = item ? farmers.find((f) => f.id === item.farmerId) : null;
   const related = produce.filter((p) => p.category === item?.category && p.id !== id).slice(0, 3);
