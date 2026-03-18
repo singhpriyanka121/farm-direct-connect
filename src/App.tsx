@@ -15,6 +15,8 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
