@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, MapPin, ShieldCheck, Star, Calendar, Package, TrendingDown } from "lucide-react";
+import { ArrowLeft, MapPin, ShieldCheck, Star, Calendar, Package, TrendingDown, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { produce, farmers } from "@/data/mockData";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const gradeColors: Record<string, string> = {
   A: "bg-primary text-primary-foreground",
