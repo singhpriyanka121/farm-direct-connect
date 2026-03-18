@@ -47,7 +47,7 @@ export default function Login() {
       toast({ title: "Login failed", description: error.message, variant: "destructive" });
     } else {
       toast({ title: "Login successful! 🎉", description: "Welcome back to Farm2Market." });
-      navigate("/marketplace");
+      // Navigation handled by useEffect when profile loads
     }
   };
 
