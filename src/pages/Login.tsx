@@ -23,11 +23,13 @@ export default function Login() {
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [signupForm, setSignupForm] = useState({ name: "", email: "", password: "", role: "buyer" });
 
+  const { profile: authProfile } = useAuth();
+
   useEffect(() => {
-    if (session) {
-      navigate("/marketplace");
+    if (session && authProfile) {
+      navigate(authProfile.role === "farmer" ? "/farmer-dashboard" : "/buyer-dashboard");
     }
-  }, [session, navigate]);
+  }, [session, authProfile, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
