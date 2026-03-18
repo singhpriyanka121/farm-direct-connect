@@ -120,8 +120,29 @@ export default function ProduceDetail() {
               <Button className="w-full rounded-full font-semibold text-base" size="lg" onClick={handleOrder}>
                 Place Order
               </Button>
-              <Button variant="outline" className="w-full rounded-full mt-3" onClick={() => toast({ title: "Quote requested!", description: "The farmer will send you a custom quote." })}>
-                Request Quote
+              <Button
+                variant="outline"
+                className="w-full rounded-full mt-3 gap-2"
+                onClick={async () => {
+                  if (!user) { navigate("/login"); return; }
+                  const { error } = await supabase.from("cart_items").insert({
+                    user_id: user.id,
+                    produce_id: item.id,
+                    produce_name: item.name,
+                    farmer_name: item.farmerName,
+                    price: item.price,
+                    unit: item.unit,
+                    quantity: item.minOrder,
+                    image: item.image,
+                  });
+                  if (error) {
+                    toast({ title: "Failed to add to cart", variant: "destructive" });
+                  } else {
+                    toast({ title: "Added to cart! 🛒", description: `${item.name} added to your cart.` });
+                  }
+                }}
+              >
+                <ShoppingCart className="h-4 w-4" /> Add to Cart
               </Button>
             </Card>
 
