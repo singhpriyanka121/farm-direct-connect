@@ -11,6 +11,8 @@ import FarmerProfile from "./pages/FarmerProfile";
 import FarmerOnboarding from "./pages/FarmerOnboarding";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import FarmerDashboard from "./pages/FarmerDashboard";
+import AddProduce from "./pages/AddProduce";
+import EnterDetails from "./pages/EnterDetails";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
