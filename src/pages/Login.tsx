@@ -150,32 +150,26 @@ export default function Login() {
     }
   };
 
-  const PhoneInput = ({ value, onChange }: { value: string; onChange: (v: string) => void }) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const raw = e.target.value.replace(/[^0-9]/g, "");
-      if (raw.length <= 10) {
-        onChange(raw);
-      }
-    };
-
-    return (
-      <div className="relative">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-1.5 text-muted-foreground pointer-events-none">
-          <Phone className="h-5 w-5" />
-          <span className="text-sm font-semibold border-r border-border pr-2">+91</span>
-        </div>
-        <input
-          type="tel"
-          inputMode="numeric"
-          autoComplete="tel-national"
-          placeholder="98765 43210"
-          value={value}
-          onChange={handleChange}
-          className="flex h-14 w-full rounded-xl border border-input bg-background pl-24 pr-3 py-2 text-lg font-semibold tracking-wide ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        />
+  const renderPhoneInput = (value: string, onChange: (v: string) => void) => (
+    <div className="relative">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-1.5 text-muted-foreground pointer-events-none">
+        <Phone className="h-5 w-5" />
+        <span className="text-sm font-semibold border-r border-border pr-2">+91</span>
       </div>
-    );
-  };
+      <input
+        type="tel"
+        inputMode="numeric"
+        autoComplete="tel-national"
+        placeholder="98765 43210"
+        value={value}
+        onChange={(e) => {
+          const raw = e.target.value.replace(/[^0-9]/g, "");
+          if (raw.length <= 10) onChange(raw);
+        }}
+        className="flex h-14 w-full rounded-xl border border-input bg-background pl-24 pr-3 py-2 text-lg font-semibold tracking-wide ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      />
+    </div>
+  );
 
   const OTPEntry = ({
     otp,
@@ -261,7 +255,7 @@ export default function Login() {
                 {loginStep === "input" ? (
                   <form onSubmit={handleLoginSendOTP} className="space-y-6">
                     <p className="text-sm text-muted-foreground text-center">Enter your registered phone number</p>
-                    <PhoneInput value={loginPhone} onChange={setLoginPhone} />
+                    {renderPhoneInput(loginPhone, setLoginPhone)}
                     <Button type="submit" className="w-full h-14 rounded-xl text-lg font-bold gap-2" disabled={isLoading}>
                       {isLoading ? "Sending OTP..." : "Get OTP"}
                       {!isLoading && <ArrowRight className="h-5 w-5" />}
@@ -295,7 +289,7 @@ export default function Login() {
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Phone Number</label>
-                      <PhoneInput value={signupPhone} onChange={setSignupPhone} />
+                      {renderPhoneInput(signupPhone, setSignupPhone)}
                     </div>
 
                     <div className="space-y-2">
