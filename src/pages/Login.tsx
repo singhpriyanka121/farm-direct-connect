@@ -255,7 +255,7 @@ export default function Login() {
                 {loginStep === "input" ? (
                   <form onSubmit={handleLoginSendOTP} className="space-y-6">
                     <p className="text-sm text-muted-foreground text-center">Enter your registered phone number</p>
-                    <PhoneInput value={loginPhone} onChange={setLoginPhone} />
+                    {renderPhoneInput(loginPhone, setLoginPhone)}
                     <Button type="submit" className="w-full h-14 rounded-xl text-lg font-bold gap-2" disabled={isLoading}>
                       {isLoading ? "Sending OTP..." : "Get OTP"}
                       {!isLoading && <ArrowRight className="h-5 w-5" />}
