@@ -195,7 +195,7 @@ export default function EnterDetails() {
               </div>
 
               <Button type="submit" className="w-full h-14 rounded-xl text-lg font-bold">
-                List Produce
+                Review & Post →
               </Button>
             </form>
           </CardContent>
