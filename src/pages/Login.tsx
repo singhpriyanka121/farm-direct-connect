@@ -289,7 +289,7 @@ export default function Login() {
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Phone Number</label>
-                      <PhoneInput value={signupPhone} onChange={setSignupPhone} />
+                      {renderPhoneInput(signupPhone, setSignupPhone)}
                     </div>
 
                     <div className="space-y-2">
