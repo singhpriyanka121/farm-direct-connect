@@ -83,8 +83,7 @@ export default function EnterDetails() {
       toast({ title: "Please fill required fields", variant: "destructive" });
       return;
     }
-    toast({ title: "Produce listed! 🎉", description: `${form.name} added to your listings.` });
-    navigate("/farmer-dashboard");
+    navigate("/review-post", { state: { ...form, category } });
   };
 
   return (
