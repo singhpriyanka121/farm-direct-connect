@@ -13,6 +13,7 @@ import BuyerDashboard from "./pages/BuyerDashboard";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import AddProduce from "./pages/AddProduce";
 import EnterDetails from "./pages/EnterDetails";
+import ReviewPost from "./pages/ReviewPost";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
