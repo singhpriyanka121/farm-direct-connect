@@ -13,6 +13,7 @@ import BuyerDashboard from "./pages/BuyerDashboard";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import AddProduce from "./pages/AddProduce";
 import EnterDetails from "./pages/EnterDetails";
+import ReviewPost from "./pages/ReviewPost";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
             <Route path="/add-produce" element={<AddProduce />} />
             <Route path="/enter-details" element={<EnterDetails />} />
+            <Route path="/review-post" element={<ReviewPost />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
